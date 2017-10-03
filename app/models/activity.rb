@@ -14,4 +14,12 @@ class Activity < ApplicationRecord
     miles
   end
 
+  def week
+    self.date.strftime('%W')
+  end
+
+  def year
+    self.date.strftime('%W')
+  end
+
 end

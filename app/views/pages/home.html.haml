@@ -3,8 +3,5 @@
   - if @activities.empty?
     %span There are no activities!!
   - else
-    - @activities.each do |activity|
-      %div.activity
-        %p= activity.title
-        %p= activity.total_mileage
-        = link_to 'More Details', activity_path(activity)
+    - @activities.group_by(&:week).each do |week, weeklyactivities|
+      = render 'weeklygroup', week: week, weeklyactivities: weeklyactivities
