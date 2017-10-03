@@ -1,0 +1,14 @@
+%h1 New Activity
+= simple_form_for @activity do |f|
+  %div.new-activity-form
+    = f.input :title
+    = f.input :desc
+    = f.input :time
+    = f.input :date
+    = f.input :warmup
+    = f.input :activity
+    = f.input :cooldown
+    = f.input :race
+    = f.input :workout
+  %div.new-acticity-form-footer
+    = f.submit 'Save', class: 'button button-primary'

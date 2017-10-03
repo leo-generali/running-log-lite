@@ -1,0 +1,14 @@
+%div.container
+  - if @activities.empty?
+    %span There are no activities!!
+  - else
+    - @activities.each do |activity|
+      %div.activity
+        %p= activity.title
+        %p= activity.desc
+        %p= activity.time
+        %p= activity.date
+        %p= activity.warmup
+        %p= activity.activity
+        %p= activity.cooldown
+        = link_to 'More Details', activity_path(activity) 
