@@ -2,8 +2,17 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.activity {
-  display: flex;
-  padding: 10px;
+@import 'variables';
 
+$activity-width: 100px;
+
+.activity {
+  width: $activity-width;
+  height: $activity-width * 1.5;
+}
+
+.activity-weekly {
+  display: flex;
+  justify-content: space-around;
+  margin: 2em;
 }
