@@ -1,0 +1,6 @@
+%h1= day.strftime('%a')
+- activities_in_day.each do |activity|
+  .activity
+    %p= activity.title
+    %p= activity.total_mileage
+    = link_to 'More Info', activity_path(activity) 

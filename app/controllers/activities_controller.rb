@@ -13,7 +13,7 @@ class ActivitiesController < ApplicationController
   end
 
   private
-  def task_params
+  def activity_params
     params.require(:activity).permit(:title, :desc, :time, :date, :warmup, :activity, :cooldown, :race, :workout)
   end
 end

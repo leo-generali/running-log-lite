@@ -1,7 +1,7 @@
 %div.container
   = link_to 'New Activity', new_activity_path
   - if @activities.empty?
-    %span There are no activities!!
+    %span There are no activities!
   - else
-    - @activities.group_by(&:week).each do |week, weeklyactivities|
-      = render 'weeklygroup', week: week, weeklyactivities: weeklyactivities
+    - @activities.group_by(&:week).each do |week, activities_in_week|
+      = render 'activities_in_week', week: week, activities_in_week: activities_in_week

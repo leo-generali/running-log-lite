@@ -1,0 +1,4 @@
+%h1= 'Week of ' + week
+- activities_in_week.group_by(&:date).each do |day, activities_in_day|
+  .activity-weekly
+    = render 'activities_in_day', day: day, activities_in_day: activities_in_day

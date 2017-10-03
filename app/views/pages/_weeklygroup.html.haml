@@ -1,7 +1,0 @@
-%h1= 'Week of ' + week
-.activity-weekly
-  - weeklyactivities.each do |activity|
-    .activity
-      %p= activity.title
-      %p= activity.total_mileage
-      = link_to 'More Details', activity_path(activity)
