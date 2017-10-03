@@ -5,10 +5,5 @@
     - @activities.each do |activity|
       %div.activity
         %p= activity.title
-        %p= activity.desc
-        %p= activity.time
-        %p= activity.date
-        %p= activity.warmup
-        %p= activity.activity
-        %p= activity.cooldown
+        %p= activity.total_mileage
         = link_to 'More Details', activity_path(activity) 
