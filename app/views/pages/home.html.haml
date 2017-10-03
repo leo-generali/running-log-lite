@@ -1,4 +1,5 @@
 %div.container
+  = link_to 'New Activity', new_activity_path
   - if @activities.empty?
     %span There are no activities!!
   - else
@@ -6,4 +7,4 @@
       %div.activity
         %p= activity.title
         %p= activity.total_mileage
-        = link_to 'More Details', activity_path(activity) 
+        = link_to 'More Details', activity_path(activity)
