@@ -1,7 +1,8 @@
 %div.container
   = link_to 'New Activity', new_activity_path
-  .activity-weekly
-    - @dates_with_mileage.each do |date|
-      =link_to activities_in_date_path(:date => date[:date]), :class => "activity" do 
-        %p.activity__title= date[:date]
-        %p.activity__miles= date[:mileage]
+  - @weeks_with_activities.each do |week|
+    .activity-weekly
+      - week.each do |date|
+        =link_to activities_in_date_path(:date => date[:date]), :class => "activity" do 
+          %p.activity__title= date[:date].strftime("%b %-d")
+          %p.activity__miles= date[:mileage]
