@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171002201729) do
+ActiveRecord::Schema.define(version: 20171004195453) do
 
   create_table "activities", force: :cascade do |t|
     t.string "title"
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20171002201729) do
     t.float "cooldown"
     t.boolean "race"
     t.boolean "workout"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "date_with_activities", force: :cascade do |t|
+    t.date "date"
+    t.float "miles"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

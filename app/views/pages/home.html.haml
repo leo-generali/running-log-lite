@@ -1,7 +1,11 @@
 %div.container
   = link_to 'New Activity', new_activity_path
+  
   - if @activities.empty?
     %span There are no activities!
   - else
-    - @activities.group_by(&:week).each do |week, activities_in_week|
-      = render 'activities_in_week', week: week, activities_in_week: activities_in_week
+    .activity-weekly
+      - @activities.distinct.pluck(:date).each do |date, activities_in_day|
+        =link_to date, activities_in_date_path(:date => date)
+      -# - @activities.group_by(&:date).each do |date, activities_in_day|
+      -#   = render 'activities_in_day', date: date, activities_in_day: activities_in_day

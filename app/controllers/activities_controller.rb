@@ -4,7 +4,7 @@ class ActivitiesController < ApplicationController
   end
 
   def create
-    @activity = Activity.create(task_params)
+    @activity = Activity.create(activity_params)
     redirect_to root_path
   end
 
