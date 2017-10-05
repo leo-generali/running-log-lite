@@ -27,8 +27,8 @@ $activity-color: #fff;
 
   &__miles {
     position: absolute;
-    bottom: -0.2em;
-    right: -0.2em;
+    bottom: 0;
+    right: 2px;
     font-size: 4.8em;
     color: $accent-dark;
   }
@@ -41,7 +41,6 @@ $activity-color: #fff;
 
 .activity-weekly {
   display: flex;
-  flex-direction: row-reverse;
   justify-content: space-around;
   margin: 2em;
 }

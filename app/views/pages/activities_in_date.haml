@@ -1,6 +1,6 @@
 .activity-weekly
   - @activities.each do |activity|
-    = link_to activity_path(activity), :class => "activity" do     
-      %p= @date
+    = link_to activity_path(activity), :class => "activity" do
+      %p= @date_str
       %p.activity__title= activity.title
       %p.activity__miles= activity.total_mileage

@@ -1,15 +1,15 @@
 class PagesController < ApplicationController
+  helper_method :check_date
+
   def home
     @activities = Activity.order('date DESC')
     dates_by_week = @activities.group_by(&:week)
     weeks = dates_by_week.keys
-
-
     @weeks_with_activities = []
     weeks.each do |week|
       arr = []
       unique_dates_in_week = []
-      dates_by_week[week].uniq{|x| x.date}.each do |activity|
+      dates_by_week[week].uniq { | x | x.date }.each do |activity|
         unique_dates_in_week.push(activity[:date])
       end
 
@@ -22,16 +22,25 @@ class PagesController < ApplicationController
         }
         arr.push(date_info)
       end
-      
       @weeks_with_activities.push(create_blank_date(arr))
     end
   end
 
   def activities_in_date
-    @date = params[:date].to_s
+    @date_str = params[:date].to_s
+    @date = params[:date]
     @activities = Activity.where("date = '#{@date}'")
     @total_mileage = get_mileage_in_date(@activities)
     puts @total_mileage
+  end
+
+  def check_date(date)
+    boolean = false
+    if date > Date.today
+      boolean = true
+      puts "#{date} is after #{Date.today}"
+    end
+    boolean
   end
 
   private

@@ -1,0 +1,23 @@
+.sidebar{
+  position: absolute;
+  top: 0; 
+  bottom: 0;
+  left: 0;
+  width: $sidebar-size;
+  background-color: $sidebar-color;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.sidebar-link {
+  margin-top: 2em;
+  font-size: 2em;
+  text-decoration: none;
+  color: #FFF;
+  transition: 0.2s;
+
+  &:hover {
+    background-position: right center;
+  }
+}

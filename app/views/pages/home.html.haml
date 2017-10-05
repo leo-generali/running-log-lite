@@ -1,8 +1,7 @@
-%div.container
-  = link_to 'New Activity', new_activity_path
-  - @weeks_with_activities.each do |week|
-    .activity-weekly
-      - week.each do |date|
+- @weeks_with_activities.each do |week|
+  .activity-weekly
+    - week.each do |date|
+      - unless check_date(date[:date])
         =link_to activities_in_date_path(:date => date[:date]), :class => "activity" do 
           %p.activity__title= date[:date].strftime("%b %-d")
           %p.activity__miles= date[:mileage]
