@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   def home
-    @activities = Activity.all
+    @activities = Activity.order('date DESC')
     dates_by_week = @activities.group_by(&:week)
     weeks = dates_by_week.keys
 
@@ -12,6 +12,7 @@ class PagesController < ApplicationController
       dates_by_week[week].uniq{|x| x.date}.each do |activity|
         unique_dates_in_week.push(activity[:date])
       end
+
       unique_dates_in_week.each do |date|
         date = date
         mileage = get_mileage_in_date(date)
@@ -23,19 +24,6 @@ class PagesController < ApplicationController
       end
       @weeks_with_activities.push(arr)
     end
-
-    @dates_with_activities = @activities.distinct.pluck(:date)
-    puts @dates_with_activities
-    @dates_with_mileage = []
-    @dates_with_activities.each do |date|
-      date = date
-      mileage = get_mileage_in_date(date)
-      date_info = {
-        date: date,
-        mileage: mileage
-      }
-      @dates_with_mileage.push(date_info)
-    end
   end
 
   def activities_in_date
@@ -46,6 +34,7 @@ class PagesController < ApplicationController
   end
 
   private
+
   def get_mileage_in_date(date)
     activities = Activity.where("date = '#{date}'")
     mileage = 0
@@ -55,5 +44,8 @@ class PagesController < ApplicationController
       mileage += activity[:cooldown].to_f
     end
     mileage
+  end
+
+  def add_zero_dates(array)
   end
 end

@@ -41,6 +41,7 @@ $activity-color: #fff;
 
 .activity-weekly {
   display: flex;
+  flex-direction: row-reverse;
   justify-content: space-around;
   margin: 2em;
 }
