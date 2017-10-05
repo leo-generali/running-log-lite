@@ -22,7 +22,8 @@ class PagesController < ApplicationController
         }
         arr.push(date_info)
       end
-      @weeks_with_activities.push(arr)
+      
+      @weeks_with_activities.push(create_blank_date(arr))
     end
   end
 
@@ -46,6 +47,21 @@ class PagesController < ApplicationController
     mileage
   end
 
-  def add_zero_dates(array)
+  def create_blank_date(arr)
+    arr_spot = arr.length - 1
+    returnArr = []
+    full_week = (arr[0][:date].beginning_of_week..arr[0][:date].end_of_week)
+    full_week.each do |day|
+      unless arr.any?{|i| i[:date] == day}
+        returnArr.push({
+          date: day,
+          mileage: 0
+          })
+      else
+        returnArr.push(arr[arr_spot])
+        arr_spot -= 1
+      end
+    end
+    returnArr
   end
 end
