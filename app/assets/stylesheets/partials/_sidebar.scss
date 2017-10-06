@@ -1,3 +1,5 @@
+$sidebar-text-color: #FFF;
+
 .sidebar{
   position: absolute;
   top: 0; 
@@ -10,14 +12,33 @@
   align-items: center;
 }
 
-.sidebar-link {
+.sidebar-item {
   margin-top: 2em;
-  font-size: 2em;
-  text-decoration: none;
-  color: #FFF;
-  transition: 0.2s;
+  font-size: 2em; 
+  color: $sidebar-text-color;
 
-  &:hover {
-    background-position: right center;
+  &--category {
+    letter-spacing: 2px;
+
+    &:after {
+      background-color: $sidebar-text-color;
+      content: '';
+      position: relative;
+      display: block;
+      height: 2px;
+      width: 100%;
+    }
+  }
+
+  &--link {
+    margin-top: 2em;
+    font-size: 2em;
+    text-decoration: none;
+    color: $sidebar-text-color;
+    transition: 0.2s;
+
+    &:hover {
+      color: darken($sidebar-text-color, 20%);
+    } 
   }
 }
