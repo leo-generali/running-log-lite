@@ -36,6 +36,10 @@ class PagesController < ApplicationController
     end
   end
 
+  def races
+    @activities = Activity.where(race: true)
+  end
+
   def activities_in_date
     @date_str = params[:date].to_s
     @date = params[:date]
