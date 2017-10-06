@@ -46,7 +46,7 @@ $sidebar-text-color: #FFF;
   &--link {
     font-size: 2em;
     text-decoration: none;
-    color: $sidebar-text-color;
+    color: darken($sidebar-text-color, 40%);
     transition: 0.2s;
     width: 100%;
     padding: 1em 1em 1em 0;
@@ -55,5 +55,15 @@ $sidebar-text-color: #FFF;
       color: darken($sidebar-text-color, 20%);
       transform: translateX(10px);
     } 
+
+    &--active {
+      color: $sidebar-text-color;
+      transform: translateX(10px);
+
+      &:hover {
+        color: $sidebar-text-color;
+        transform: 0
+      } 
+    }
   }
 }
