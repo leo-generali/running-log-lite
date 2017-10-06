@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  helper_method :check_date, :create_week_string
+  helper_method :check_date, :create_week_string, :create_race_activity_class
 
   def home
     @activities = Activity.order('date DESC')
@@ -40,6 +40,10 @@ class PagesController < ApplicationController
     @activities = Activity.where(race: true)
   end
 
+  def workouts
+    @activities = Activity.where(workout: true)
+  end
+
   def activities_in_date
     @date_str = params[:date].to_s
     @date = params[:date]
@@ -51,13 +55,17 @@ class PagesController < ApplicationController
     boolean = false
     if date > Date.today
       boolean = true
-      puts "#{date} is after #{Date.today}"
     end
     boolean
   end
 
   def create_week_string(week)
     week[0][:date].strftime("%B %-d") + " - " + week[6][:date].strftime("%B %-d")
+  end
+
+  def check_if_race(activities)
+    races = activities.where(race: true)
+    "activity"
   end
 
   private
@@ -71,6 +79,19 @@ class PagesController < ApplicationController
       mileage += activity[:cooldown].to_f
     end
     mileage
+  end
+
+  def create_race_activity_class(date)
+    classes = {
+      title: "activity__title",
+      miles: "activity__miles"
+    }
+    activities = Activity.where(race: true).where("date = '#{date}'")
+    if activities.length >= 1
+      classes[:title] += " activity__title--race"
+      classes[:miles] += " activity__miles--race"
+    end
+    classes 
   end
 
   def create_blank_date(arr)

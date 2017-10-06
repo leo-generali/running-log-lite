@@ -5,6 +5,6 @@
     .activity-weekly
       - week.each do |date|
         - unless check_date(date[:date])
-          =link_to activities_in_date_path(:date => date[:date]), :class => "activity" do 
-            %p.activity__title= date[:date].strftime("%b %-d")
-            %p.activity__miles= date[:mileage]
+          =link_to activities_in_date_path(date: date[:date]), class: "activity" do 
+            %p{ class: create_race_activity_class(date[:date])[:title] }= date[:date].strftime("%b %-d")
+            %p{ class: create_race_activity_class(date[:date])[:miles] }= date[:mileage]

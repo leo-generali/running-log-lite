@@ -5,6 +5,7 @@
 $activity-width: 130px;
 $activity-color: #fff;
 
+
 .activity {
   width: $activity-width;
   height: $activity-width * 1.5;
@@ -22,6 +23,10 @@ $activity-color: #fff;
     color: $accent-light;
     letter-spacing: 1px;
     font-size: 3.2em;
+
+    &--race {
+      color: $race-color-light;
+    }
   }
 
 
@@ -31,6 +36,10 @@ $activity-color: #fff;
     right: 2px;
     font-size: 4.8em;
     color: $accent-dark;
+
+    &--race {
+      color: $race-color-dark;
+    }
   }
 
   &:hover {
