@@ -1,8 +1,10 @@
-- @weeks_with_activities.each do |week|
-  %p= week[0][:date].strftime("%B %-d") + " - " + week[6][:date].strftime("%B %-d")
-  .activity-weekly
-    - week.each do |date|
-      - unless check_date(date[:date])
-        =link_to activities_in_date_path(:date => date[:date]), :class => "activity" do 
-          %p.activity__title= date[:date].strftime("%b %-d")
-          %p.activity__miles= date[:mileage]
+- @weeks_with_activities.each_with_index do |week, index|
+  - unless check_date(week[0][:date])
+    %p= create_week_string(week)
+    %p= @weekly_mileages[index]
+    .activity-weekly
+      - week.each do |date|
+        - unless check_date(date[:date])
+          =link_to activities_in_date_path(:date => date[:date]), :class => "activity" do 
+            %p.activity__title= date[:date].strftime("%b %-d")
+            %p.activity__miles= date[:mileage]
