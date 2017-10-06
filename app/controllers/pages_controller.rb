@@ -2,7 +2,7 @@ class PagesController < ApplicationController
   helper_method :check_date, :create_week_string, :create_race_activity_class
 
   def home
-    @activities = Activity.order('date DESC')
+    @activities = Activity.order('date DESC').where("date < '#{DateTime.now}'")
     dates_by_week = @activities.group_by(&:week)
     weeks = dates_by_week.keys
 
@@ -37,11 +37,11 @@ class PagesController < ApplicationController
   end
 
   def races
-    @activities = Activity.where(race: true)
+    @activities = Activity.where(race: true).where("date < '#{DateTime.now}'")
   end
 
   def workouts
-    @activities = Activity.where(workout: true)
+    @activities = Activity.where(workout: true).where("date < '#{DateTime.now}'")
   end
 
   def activities_in_date
