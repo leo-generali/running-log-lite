@@ -1,0 +1,31 @@
+.form-title {
+  font-size: 3em;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  background-color: #FFF;
+  box-shadow: $default-box-shadow;
+
+  &:before {
+    content: '';
+    width: 100%;
+    height: 0.5em;
+    background: linear-gradient(45deg, blue, red);;
+  }
+}
+
+.form-new-activity-inputs {
+
+  & label {
+    font-size: 2em;
+  }
+}
+
+.form-new-activity-modifiers {
+  & label {
+    font-size: 2em;
+  }
+}
